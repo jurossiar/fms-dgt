@@ -264,6 +264,8 @@ def merge_dictionaries(*args: List[dict]):
         _update(merged_dict, new_dict)
     return merged_dict
 
+#attributes added that doesn't belong to original yaml file
+DATA_FILE_ADDITIONAL_ATTRIBUTES=["name","file_path"]
 
 # pylint: disable=broad-exception-caught
 def read_data_file(file_path: str):
@@ -288,6 +290,7 @@ def read_data_file(file_path: str):
                 "data_builder": data_builder,
                 "created_by": created_by,
                 "seed_examples": seed_examples,
+                "file_path": file_path
             },
             **contents,
         }

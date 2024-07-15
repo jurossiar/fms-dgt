@@ -101,6 +101,12 @@ def add_task_args(parser: argparse.ArgumentParser):
         help="Number of outputs to generate.",
         default=DEFAULT_NUM_OUTPUTS,
     )
+    group.add_argument(
+        "--lakehouse-namespace",
+        type=str,
+        default=None,
+        help="Store results in Lakehouse under the namespace. You must have permissions on it.",
+    )
     return group
 
 

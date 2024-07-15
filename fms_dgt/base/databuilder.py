@@ -163,6 +163,10 @@ class DataBuilder(ABC):
         completed_tasks = [task for task in tasks if task.is_complete()]
         tasks = [task for task in tasks if task not in completed_tasks]
 
+        # save task details for not completed tasks. Only when lakehouse is enabled
+        for task in tasks:
+            task.save_task_details_in_lakehouse()
+
         progress_bar = tqdm(total=len(tasks), desc="Running generation tasks")
         generate_start = time.time()
 
